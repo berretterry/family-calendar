@@ -1,19 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import Layout from '../components/layout';
+import Link from 'next/link';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state: {
-      currentMonth: '',
-      currentDay: ''
-    }
-  }
-  render() {
-    return (
-      <div>
-        <h1>Reservations</h1>
-      </div>
-    )
-  }
+function Home() {
+  return (
+    <Layout>
+      <h1>Choose a House for Reservations</h1>
+      <Link as="/Beach/calendar" href="/[house]/calendar">Beach House</Link>
+      <Link as="/Taos/calendar" href="/[house]/calendar">Taos Cabin</Link>
+    </Layout>
+  )
 }
+
+export default Home

@@ -1,0 +1,14 @@
+.navbar {
+  display: flex;
+  align-content: flex-start;
+}
+
+.navlink {
+  text-decoration: none;
+  font-size: 2em;
+  margin: 0px 5px 0px 5px;
+}
+
+.navlink:hover {
+  color: rgb(0, 21, 255);
+}

@@ -6,5 +6,7 @@ const withTM = require('next-transpile-modules')([
 ])
 
 module.exports = withTM({
-  // any other general next.js settings
+  images: {
+    domains: ['badgersnax.s3-us-west-2.amazonaws.com'],
+  },
 })

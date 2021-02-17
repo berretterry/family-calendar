@@ -6,27 +6,78 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
+import Modal from 'react-modal'
+import style from './calendar.module.css'
 
-// useEffect (() => {
-//   const calendar = dynamic(() => import('@fullcalendar/react'))
-//   const dayGrid = dynamic(() => import('@fullcalendar/daygrid'))
-//   const timeGrid = dynamic(() => import('@fullcalendar/timegrid'))
+const customStyles = {
+  content : {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)'
 
-// })
+  },
+  overlay: {
+    zIndex: 9999
+  }
+};
 
-handleDateClick = (d) => {
-  alert(d, 'Date Clicked')
-}
+Modal.setAppElement("#__next")
 
 function Calendar() {
+
+  const [modalIsOpen, setModalOpen] = useState(false);
+  const [currentDate, setDate] = useState('')
+
+  function handleDateClick(d) {
+    setDate(d.dateStr)
+    setModalOpen(true)
+  }
+
+  function openModal() {
+    setModalOpen(true)
+  }
+
+  function afterOpenModal() {
+    style.color = '#f00'
+  }
+
+  function closeModal() {
+    setModalOpen(false)
+  }
+
   return (
-    <FullCalendar
-      plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-      initialView="dayGridMonth"
-      nowIndicator={true}
-      editable={true}
-      dateClick={handleDateClick(d)}
-      />
+    <div>
+      <div className={style.modalcontainer}>
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={customStyles}
+          ariaHideApp={true}
+          contentLabel="Schedual a Date"
+          >
+          <div className={style.popup}>
+            <h1>Schedule Date:</h1>
+            <div>
+              <h2>{currentDate}</h2>
+              <button onClick={() => closeModal()}>Okay</button>
+            </div>
+          </div>
+        </Modal>
+        </div>
+        <div className={style.calendar}>
+        <FullCalendar
+          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+          initialView="dayGridMonth"
+          nowIndicator={true}
+          editable={true}
+          shouldCloseOnOverlayClick={true}
+          dateClick={(d) => {handleDateClick(d)}}
+          />
+      </div>
+    </div>
   )
 
 }

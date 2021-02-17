@@ -1,0 +1,40 @@
+.houses {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.beach {
+  display: flexbox;
+  height: 600px;
+  width: 400px;
+  grid-column-start: 2;
+  background-image: url('https://badgersnax.s3-us-west-2.amazonaws.com/mvp/pexels-asad-photo-maldives-240526.jpg');
+  background-position: center;
+  background-color: rgb(139, 0, 42);
+  margin: 5px 5px 5px 5px;
+  color: aliceblue;
+  font-size: 4em;
+}
+
+.taos {
+  display: flexbox;
+  height: 600px;
+  width: 400px;
+  grid-column-start: 3;
+  background-image: url('https://badgersnax.s3-us-west-2.amazonaws.com/mvp/IMG_20171225_114047.jpg');
+  background-position: center;
+  background-color: darkcyan;
+  margin: 5px 5px 5px 5px;
+  color: aliceblue;
+  font-size: 4em;
+}
+
+.taoscabinimage {
+  overflow: hidden;
+  margin: 20em;
+}
+
+.beachhouseimage {
+  overflow: hidden;
+  margin: 20em;
+}
